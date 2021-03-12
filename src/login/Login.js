@@ -2,6 +2,9 @@ import { Button } from '@material-ui/core'
 import React from 'react'
 import './login.css'
 import { makeStyles } from '@material-ui/core/styles';
+import {auth,provider} from '../firebase';
+import { actionTypes } from '../stateProvider/Reducer';
+import { useStateValue } from '../stateProvider/StateProvider';
 const useStyles = makeStyles((theme) => ({
     root: {
         background: '#4178e6',
@@ -16,10 +19,21 @@ const useStyles = makeStyles((theme) => ({
     },
   }));
 function Login() {
+    const [state,dispatch] = useStateValue();
+
     const classes = useStyles();
     const signIn = (e) => {
         e.preventDefault();
-        console.log("work");
+        auth.signInWithPopup(provider)
+        .then((res) => {
+            dispatch({
+                type: actionTypes.SET_USER,
+                user: res.user,
+            })
+        })
+        .catch((err) => {
+            alert(err);
+        })
     }
     return (
         <div className="login">
