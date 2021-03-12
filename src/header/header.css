@@ -1,0 +1,70 @@
+.header {
+    position: sticky;
+    display: flex;
+    padding: 15px 20px;
+    justify-content: space-between;
+    background-color: white;
+    z-index: 100;
+    box-shadow: 0 5px 8px -9px rgba(0, 0, 0, 0.4);
+}
+.header-left {
+    display: flex;
+    justify-content: space-evenly;
+}
+.header-left > img {
+    height: 40px;
+}
+.header-input {
+    display: flex;
+    align-items: center;
+    background-color: rgb(240, 240, 240);
+    padding: 10px;
+    margin-left: 10px;
+    border-radius: 33px;
+}
+.header-input > input {
+    padding: 0 5px 0 5px;
+    border: none;
+    background-color: transparent;
+    outline-width: 0;
+}
+.header-center {
+    display: flex;
+    flex: 1;
+    justify-content: center;
+}
+.header-mainMenu {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    padding: 0 25px;
+}
+.header-mainMenu > .MuiSvgIcon-root {
+    color: gray;
+}
+.header-mainMenu--active > .MuiSvgIcon-root {
+    color: #4178e6;
+}
+.header-mainMenu--active {
+    border-bottom: solid 4px #4178e6;
+}
+.header-mainMenu:hover {
+    background-color: rgb(240, 240, 240);
+    border-radius: 10px;
+    align-items: center;
+    padding: 0 25px;
+    border-bottom: none;
+}
+.header-mainMenu:hover > .MuiSvgIcon-root {
+    color: #4178e6;
+}
+.header-right {
+    display: flex;
+}
+.header-info {
+    display: flex;
+    align-items: center;
+}
+.header-info > h4 {
+    margin-left: 10px;
+}

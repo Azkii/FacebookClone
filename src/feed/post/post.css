@@ -1,0 +1,52 @@
+.post {
+    width: 100%;
+    margin-top: 20px;
+    border-radius: 10px;
+    background-color: white;
+    box-shadow: 0px 5px 7px -7px rgba(0, 0, 0, 0.7);
+}
+.post-image > img {
+    width: 100%;
+}
+.post-top {
+    position: relative;
+    display: flex;
+    align-items: center;
+    padding: 15px;
+}
+.post-avatar {
+    margin-right: 10px;
+}
+.post-topInfo p {
+    color: rgb(77, 77, 77);
+    font-size: small;
+}
+.post-bottom {
+    margin: 10px 0 10px 0;
+    padding: 15px 25px;
+}
+.post-reactions {
+    background-color: rgb(252, 252, 252);
+    margin: 10px 20px;
+    padding: 10px 15px 10px 15px;
+    display: flex;
+    justify-content: space-evenly;
+    color: rgb(77, 77, 77);
+    cursor: pointer;
+    border-radius: 20px;
+}
+.post-reaction {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 10px 5px;
+    flex: 1;
+}
+.post-reaction:hover {
+    background-color: rgba(128, 128, 128, 0.2);
+    border-radius: 15px;
+    color: black;
+}
+.post-reaction p {
+    margin-left: 10px;
+}

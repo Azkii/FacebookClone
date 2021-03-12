@@ -1,0 +1,9 @@
+.widget iframe{
+    margin-top: 30px;
+    overflow:hidden;
+    border: none;
+}
+.widget {
+    display: flex;
+    flex-direction: column;
+}
