@@ -5,6 +5,9 @@ import SentimentVerySatisfiedIcon from '@material-ui/icons/SentimentVerySatisfie
 import React, { useState } from 'react';
 import './messegeSender.css';
 import { useStateValue } from '../../stateProvider/StateProvider'
+
+import db from '../../firebase';
+import firebase from 'firebase';
 function MessegeSender() {
 
     const [{user},dispatch] = useStateValue();
@@ -13,8 +16,18 @@ function MessegeSender() {
     const [imageUrl, setImageUrl] = useState('');
     const handleSubmit = e => {
         e.preventDefault();
-        console.log(inputText);
-        console.log(imageUrl);
+
+        db.collection("posts").add({
+            image: imageUrl,
+            messege: inputText,
+            profile: user.photoURL,
+            timeStamp: 
+            firebase
+             .firestore
+             .FieldValue
+             .serverTimestamp(),
+            username: user.displayName
+        })
         //push to db
         setInputText('');
         setImageUrl('');

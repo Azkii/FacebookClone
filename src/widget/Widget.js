@@ -8,8 +8,6 @@ function Widget() {
          width="350"
          height="600"
          scrolling="no"
-         frameborder="0"
-         allowfullscreen="true"
          allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"
         />
         </div>

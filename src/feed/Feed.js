@@ -1,28 +1,40 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import './feed.css';
 import StoryReel from './storyReel/StoryReel';
 import MessegeSender from './messageSender/MessegeSender';
 import Post from './post/Post';
+import db from '../firebase';
 export default function Feed() {
+    const [posts, setPosts] = useState([]);
+
+    useEffect(() => {
+        db.collection('posts')
+            .orderBy('timeStamp', 'desc')
+            .onSnapshot(snap => {
+                setPosts(snap.docs.map(doc => {
+                    return {
+                        id: doc.id,
+                        data: doc.data()
+                    }
+                }))
+            })
+    },[])
     return (
         <div className="feed">
             <StoryReel />
             <MessegeSender />
-
-            <Post
-             profile = {'https://upload.wikimedia.org/wikipedia/commons/8/84/Deno.svg'}
-             image = {'https://www.telepolis.pl/media/cache/resolve/amp_recommended_size/images/miniatury/oregairu-3-ikona.png'}
-             username = {'Dawid Pacanowski'}
-             timeStamp = {'15'}
-             messege = {"that's works"}
-            />
-            <Post
-             profile = {'https://upload.wikimedia.org/wikipedia/commons/8/84/Deno.svg'}
-             image = {''}
-             username = {'Kamil Star'}
-             timeStamp = {'test'}
-             messege = {"thest 2"}
-            />
+            {posts.map(post => {
+                return (
+                    <Post
+                    key={post.id}
+                    profile = {post.data.profile}
+                    image = {post.data.image}
+                    username = {post.data.username}
+                    timeStamp = {post.data.timeStamp}
+                    messege = {post.data.messege}
+                   />
+                )
+            })}
         </div>
     )
 }
