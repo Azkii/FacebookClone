@@ -8,10 +8,16 @@ import GroupIcon from '@material-ui/icons/Group';
 import StoreIcon from '@material-ui/icons/Store';
 import VideoLibraryIcon from '@material-ui/icons/VideoLibrary';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
+
+import { useStateValue } from '../stateProvider/StateProvider';
+
 function Sidebar() {
+
+    const [{user},dispatch] = useStateValue();
+
     return (
         <div className="sideBar">
-            <SideBarRow src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/84/Deno.svg/1200px-Deno.svg.png" name="Dawid Pacanowski" /*src={user.photoURL} name={user.displayName}*/ />
+            <SideBarRow src={user.photoURL} name={user.displayName} />
             <SideBarRow Icon={FlagIcon} name='Pages' />
             <SideBarRow Icon={GroupIcon} name='Messenger' />
             <SideBarRow Icon={StoreIcon} name='MarketPlace' />

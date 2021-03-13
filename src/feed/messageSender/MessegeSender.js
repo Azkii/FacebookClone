@@ -4,7 +4,11 @@ import PhotoLibraryIcon from '@material-ui/icons/PhotoLibrary';
 import SentimentVerySatisfiedIcon from '@material-ui/icons/SentimentVerySatisfied';
 import React, { useState } from 'react';
 import './messegeSender.css';
+import { useStateValue } from '../../stateProvider/StateProvider'
 function MessegeSender() {
+
+    const [{user},dispatch] = useStateValue();
+
     const [inputText, setInputText] = useState('');
     const [imageUrl, setImageUrl] = useState('');
     const handleSubmit = e => {
@@ -18,7 +22,7 @@ function MessegeSender() {
     return (
         <div className="messegeSender">
             <div className="messegeSender-top">
-                <Avatar />
+                <Avatar src={user.photoURL} />
                 <form>
                     <input
                      required
