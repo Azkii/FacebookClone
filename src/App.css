@@ -1,5 +1,6 @@
 .app {
     background: rgb(250, 250, 250);
+    min-height: 100vh;
 }
 .appBody {
     display: flex;

@@ -4,6 +4,7 @@ import StoryReel from './storyReel/StoryReel';
 import MessegeSender from './messageSender/MessegeSender';
 import Post from './post/Post';
 import db from '../firebase';
+
 export default function Feed() {
     const [posts, setPosts] = useState([]);
 
@@ -32,6 +33,8 @@ export default function Feed() {
                     username = {post.data.username}
                     timeStamp = {post.data.timeStamp}
                     messege = {post.data.messege}
+                    userID = {post.data.userID}
+                    messegeID = {post.id}
                    />
                 )
             })}

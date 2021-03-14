@@ -4,7 +4,27 @@ import './post.css'
 import ThumbUpAltIcon from '@material-ui/icons/ThumbUpAlt';
 import ChatBubbleOutlineIcon from '@material-ui/icons/ChatBubbleOutline';
 import ShareIcon from '@material-ui/icons/Share';
-function Post({profile,image,username,timeStamp,messege}) {
+import CloseIcon from '@material-ui/icons/Close';
+
+import { useStateValue } from '../../stateProvider/StateProvider';
+import db from '../../firebase';
+
+function Post({profile,image,username,timeStamp,messege,userID,messegeID}) {
+
+    const [{user},dispatch] = useStateValue();
+
+    const deletePost = () => {
+        db
+         .collection("posts")
+         .doc(messegeID)
+         .delete()
+         .then(() => {
+            console.log("messege deleted")
+          })
+         .catch((err) => {
+              console.log(err);
+          })
+    };
     return (
         <div className="post">
             <div className="post-top">
@@ -13,6 +33,13 @@ function Post({profile,image,username,timeStamp,messege}) {
                     <h4>{username}</h4>
                     <p>{new Date(timeStamp?.toDate()).toUTCString()}</p>
                 </div>
+                {user.uid === userID ? 
+                    <button className="post-deleteBtn" onClick={deletePost}>
+                        <CloseIcon />
+                    </button>
+                    :
+                    ""
+                }
             </div>
             <div className="post-bottom">
                 <p>{messege}</p>

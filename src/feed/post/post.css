@@ -50,3 +50,18 @@
 .post-reaction p {
     margin-left: 10px;
 }
+.post-deleteBtn {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    right: 20px;
+    outline: none;
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    opacity: 0.5;
+}
+.post-deleteBtn:hover{
+    opacity: 1;
+}

@@ -9,9 +9,8 @@ import { useStateValue } from '../../stateProvider/StateProvider'
 import db from '../../firebase';
 import firebase from 'firebase';
 function MessegeSender() {
-
+    console.log();
     const [{user},dispatch] = useStateValue();
-
     const [inputText, setInputText] = useState('');
     const [imageUrl, setImageUrl] = useState('');
     const handleSubmit = e => {
@@ -26,7 +25,8 @@ function MessegeSender() {
              .firestore
              .FieldValue
              .serverTimestamp(),
-            username: user.displayName
+            username: user.displayName,
+            userID: user.uid
         })
         //push to db
         setInputText('');
