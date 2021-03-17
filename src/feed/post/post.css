@@ -55,6 +55,7 @@
     justify-content: center;
     align-items: center;
     position: absolute;
+    top: 20px;
     right: 20px;
     outline: none;
     background-color: transparent;
@@ -64,4 +65,43 @@
 }
 .post-deleteBtn:hover{
     opacity: 1;
+}
+/*Post comments*/
+.post-comments {
+    display: flex;
+    flex-direction: column;
+}
+.post-comment {
+    display: flex;
+    padding: 0 10px 0px 10px;
+    margin: 5px 0 5px 0;
+    justify-content: flex-start;
+    align-items: center;
+}
+.post-commentText {
+    padding: 5px 15px;
+    background-color: rgb(235, 235, 235);
+    min-width: 150px;
+    border-radius: 10px;
+}
+.post-commentText h4 {
+    font-size: 0.8rem;
+}
+.post-commentText p {
+    font-size: 1rem;
+    text-align: left;
+    text-justify: auto;
+}
+.post-form {
+    display: flex;
+    padding: 0 10px 10px 10px;
+    margin: 10px 0 5px 0;
+}
+.post-form > input {
+    flex: 1;
+    border-radius: 50px;
+    background-color: rgb(230, 230, 230);
+    border: none;
+    outline: none;
+    padding: 0 15px 0 15px;
 }

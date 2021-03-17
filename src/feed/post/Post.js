@@ -6,11 +6,25 @@ import ChatBubbleOutlineIcon from '@material-ui/icons/ChatBubbleOutline';
 import ShareIcon from '@material-ui/icons/Share';
 import CloseIcon from '@material-ui/icons/Close';
 
+import { makeStyles } from '@material-ui/core/styles';
+
 import { useStateValue } from '../../stateProvider/StateProvider';
 import db from '../../firebase';
 
-function Post({profile,image,username,timeStamp,messege,userID,messegeID}) {
+const useStyles = makeStyles((theme) => ({
+    small: {
+      width: theme.spacing(4),
+      height: theme.spacing(4),
+      marginRight: '10px',
+    },
+    large: {
+      width: theme.spacing(7),
+      height: theme.spacing(7),
+    },
+}));
 
+function Post({profile,image,username,timeStamp,messege,userID,messegeID}) {
+    const classes = useStyles();
     const [{user},dispatch] = useStateValue();
 
     const deletePost = () => {
@@ -60,6 +74,26 @@ function Post({profile,image,username,timeStamp,messege,userID,messegeID}) {
                     <ShareIcon />
                     <p>Share</p>
                 </div>
+            </div>
+            <div className="post-comments">
+                <div className="post-comment">
+                    <Avatar className={classes.small} />
+                    <div className="post-commentText">
+                        <h4>Azuki_</h4>
+                        <p>Fighto</p>
+                    </div>
+                </div>
+                <div className="post-comment">
+                    <Avatar className={classes.small} />
+                    <div className="post-commentText">
+                        <h4>Azuki_</h4>
+                        <p>Koniecznie włącz dźwięk oglądając! Zmieniaj świat razem z namiKoniecznie włącz dźwięk oglądając! Zmieniaj świat razem z nami  </p>
+                    </div>
+                </div>
+                <form className="post-form">
+                    <Avatar className={classes.small} />
+                    <input type="text" placeholder="your comment..." />
+                </form>
             </div>
         </div>
     )
