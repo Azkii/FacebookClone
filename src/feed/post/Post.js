@@ -1,5 +1,5 @@
 import { Avatar } from '@material-ui/core'
-import React from 'react'
+import React, { useState } from 'react'
 import './post.css'
 import ThumbUpAltIcon from '@material-ui/icons/ThumbUpAlt';
 import ChatBubbleOutlineIcon from '@material-ui/icons/ChatBubbleOutline';
@@ -21,12 +21,17 @@ const useStyles = makeStyles((theme) => ({
       width: theme.spacing(7),
       height: theme.spacing(7),
     },
+    iconSmall: {
+        width: '12px',
+        height: '12px'
+    }
 }));
 
-function Post({profile,image,username,timeStamp,messege,userID,messegeID}) {
+function Post({profile,image,username,timeStamp,messege,userID,messegeID,comments}) {
     const classes = useStyles();
     const [{user},dispatch] = useStateValue();
-
+    const [showComments,setShowComments] = useState(false);
+    const [inputComment,setInputComment] = useState("");
     const deletePost = () => {
         db
          .collection("posts")
@@ -39,6 +44,46 @@ function Post({profile,image,username,timeStamp,messege,userID,messegeID}) {
               console.log(err);
           })
     };
+    const pushComment = (e) => {
+        e.preventDefault();
+
+        const newComment = {
+            userURL: user.photoURL,
+            username: user.displayName,
+            text: inputComment,
+            commentKey: `${user.uid}-${new Date().getTime()}`,
+            createdBy: user.uid,
+        }
+
+        const post = db.collection("posts").doc(messegeID)
+
+        setInputComment("");
+
+        return post.update({
+            "comments" : [...comments,newComment]
+        })
+        .then(() => {
+            console.log("Document successfully updated!");
+        })
+        .catch((error) => {
+            console.error("Error updating document: ", error);
+        })
+    }
+    const deleteComment = (e) => {
+        console.log("comment to delete");
+        const post = db.collection("posts").doc(messegeID);
+        return post.update({
+            "comments" : comments.filter((comment) => {
+                return comment.commentKey != e.target.getAttribute('data-key');
+            })
+        })
+        .then(() => {
+            console.log("Document successfully updated!");
+        })
+        .catch((error) => {
+            console.error("Error updating document: ", error);
+        })
+    }
     return (
         <div className="post">
             <div className="post-top">
@@ -66,7 +111,7 @@ function Post({profile,image,username,timeStamp,messege,userID,messegeID}) {
                     <ThumbUpAltIcon />
                     <p>Like</p>
                 </div>
-                <div className="post-reaction">
+                <div className="post-reaction" onClick={() => {setShowComments(!showComments)}}>
                     <ChatBubbleOutlineIcon />
                     <p>Comment</p>
                 </div>
@@ -75,26 +120,48 @@ function Post({profile,image,username,timeStamp,messege,userID,messegeID}) {
                     <p>Share</p>
                 </div>
             </div>
-            <div className="post-comments">
-                <div className="post-comment">
-                    <Avatar className={classes.small} />
-                    <div className="post-commentText">
-                        <h4>Azuki_</h4>
-                        <p>Fighto</p>
-                    </div>
+            {showComments ? 
+                <div className="post-comments">
+                    {comments.map((comment) => {
+                        return (
+                            <div key={comment.commentKey} className="post-comment">
+                                <Avatar className={classes.small} src={comment.userURL} />
+                                <div className="post-commentText">
+                                    <h4>{comment.username}</h4>
+                                    <p>{comment.text}</p>
+                                    {comment.createdBy === user.uid ?
+                                        <div className="post-commentDelete" >
+                                            <CloseIcon 
+                                            className={classes.iconSmall}
+                                            onClick={deleteComment}
+                                            data-key={comment.commentKey}
+                                            />
+                                        </div>
+                                    :
+                                        ""
+                                    }
+                                </div>
+                            </div>
+                        )
+                    })}
+                    <form className="post-form">
+                        <Avatar className={classes.small} />
+                        <input
+                         type="text" 
+                         placeholder="your comment..."
+                         value={inputComment}
+                         onChange={(e) => {setInputComment(e.target.value)}}
+                        />
+                        <button 
+                         type="submit" 
+                         hidden 
+                         onClick={pushComment}
+                        />
+                    </form>
                 </div>
-                <div className="post-comment">
-                    <Avatar className={classes.small} />
-                    <div className="post-commentText">
-                        <h4>Azuki_</h4>
-                        <p>Koniecznie włącz dźwięk oglądając! Zmieniaj świat razem z namiKoniecznie włącz dźwięk oglądając! Zmieniaj świat razem z nami  </p>
-                    </div>
-                </div>
-                <form className="post-form">
-                    <Avatar className={classes.small} />
-                    <input type="text" placeholder="your comment..." />
-                </form>
-            </div>
+            :
+                ""
+            }
         </div>
     )
 }

@@ -26,7 +26,8 @@ function MessegeSender() {
              .FieldValue
              .serverTimestamp(),
             username: user.displayName,
-            userID: user.uid
+            userID: user.uid,
+            comments: [],
         })
         //push to db
         setInputText('');

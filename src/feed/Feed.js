@@ -35,6 +35,7 @@ export default function Feed() {
                     messege = {post.data.messege}
                     userID = {post.data.userID}
                     messegeID = {post.id}
+                    comments = {post.data.comments}
                    />
                 )
             })}
