@@ -1,5 +1,6 @@
 .post {
     width: 100%;
+    max-width: 700px;
     margin-top: 20px;
     border-radius: 10px;
     background-color: white;
@@ -91,6 +92,7 @@
 .post-commentText p {
     font-size: 1rem;
     text-align: left;
+    word-break: break-word;
     text-justify: auto;
 }
 .post-form {

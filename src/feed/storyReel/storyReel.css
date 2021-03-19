@@ -1,3 +1,35 @@
 .storyReel {
     display: flex;
+    max-width: 700px;
+}
+.addStory {
+    width: 120px;
+    height: 200px;
+    box-shadow: 0px 5px 17px -7px rgba(0, 0, 0, 0.5);
+    border-radius: 10px;
+    margin-right: 10px;
+    transition: transform 0.1s ease-in;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+}
+.addStory:hover {
+    transform: scale(1.04);
+}
+.addStory > * {
+    width: 230px;
+    height: 230px;
+}
+.rec.rec-item-wrapper {
+    height: 220px;
+    display: flex;
+    align-items: center;
+}
+.rec.rec-arrow {
+    display: none;
+}
+.rec.rec-dot {
+    display: none;
 }

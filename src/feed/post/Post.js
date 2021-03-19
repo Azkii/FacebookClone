@@ -70,10 +70,10 @@ function Post({profile,image,username,timeStamp,messege,userID,messegeID,comment
         })
     }
     const deleteComment = (e) => {
-        console.log("comment to delete");
         const post = db.collection("posts").doc(messegeID);
         return post.update({
             "comments" : comments.filter((comment) => {
+                console.log(comment.commentKey);
                 return comment.commentKey != e.target.getAttribute('data-key');
             })
         })
