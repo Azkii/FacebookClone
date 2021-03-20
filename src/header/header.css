@@ -61,10 +61,3 @@
 .header-right {
     display: flex;
 }
-.header-info {
-    display: flex;
-    align-items: center;
-}
-.header-info > h4 {
-    margin-left: 10px;
-}

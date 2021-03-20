@@ -7,17 +7,9 @@ import FlagIcon from '@material-ui/icons/Flag';
 import SubscriptionsIcon from '@material-ui/icons/Subscriptions';
 import StoreIcon from '@material-ui/icons/Store';
 import PersonPinIcon from '@material-ui/icons/PersonPin';
-import { Avatar, IconButton } from '@material-ui/core';
-import AddIcon from '@material-ui/icons/Add';
-import ForumIcon from '@material-ui/icons/Forum';
-import NotificationsIcon from '@material-ui/icons/Notifications';
-import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 
-import { useStateValue } from '../stateProvider/StateProvider';
+import HeaderRight from './headerRight/HeaderRight';
 function Header() {
-
-    const [{user},dispatch] = useStateValue();
-
     return (
         <div className="header">
             <div className="header-left">
@@ -45,22 +37,7 @@ function Header() {
                 </div>
             </div>
             <div className="header-right">
-                <div className="header-info">
-                    <Avatar src={user.photoURL} />
-                    <h4>{user.displayName}</h4>
-                </div>
-                <IconButton>
-                    <AddIcon />
-                </IconButton>
-                <IconButton>
-                    <ForumIcon />
-                </IconButton>
-                <IconButton>
-                    <NotificationsIcon />
-                </IconButton>
-                <IconButton>
-                    <ExpandMoreIcon />
-                </IconButton>
+                <HeaderRight />
             </div>
         </div>
     )
