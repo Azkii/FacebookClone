@@ -23,6 +23,7 @@
     transition: background 500ms;
     padding: 1.8rem 1rem;
     cursor: pointer;
+    font-weight: bold;
 }
 .dropDownItem:hover {
     background-color: #f0f0f0ce;
@@ -67,4 +68,19 @@
 .menu-secondary-exit-active {
     transform: translateX(110%);
     transition: all 500ms ease;
+}
+
+/*special div for dark mode*/
+.darkMode-settings {
+    display: flex;
+}
+.darkMode-settings > div {
+    margin-left: 10px;
+}
+.darkMode-settings > div > p {
+    font-size: 0.8rem;
+}
+.darkMode-settingsRadio {
+    display: flex;
+    flex-direction: column;
 }

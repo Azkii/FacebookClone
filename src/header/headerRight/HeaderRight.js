@@ -1,6 +1,8 @@
 import React,{ useState } from 'react';
 import './headerRight.css';
 
+import firebase from 'firebase';
+
 import { useStateValue } from '../../stateProvider/StateProvider';
 
 import { Avatar, IconButton } from '@material-ui/core';
@@ -11,6 +13,18 @@ import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import ExpandLessIcon from '@material-ui/icons/ExpandLess';
 import FeedbackIcon from '@material-ui/icons/Feedback';
 import MeetingRoomIcon from '@material-ui/icons/MeetingRoom';
+import ArrowForwardIosIcon from '@material-ui/icons/ArrowForwardIos';
+import SettingsIcon from '@material-ui/icons/Settings';
+import LockIcon from '@material-ui/icons/Lock';
+import FormatListBulletedIcon from '@material-ui/icons/FormatListBulleted';
+import AppsIcon from '@material-ui/icons/Apps';
+import LanguageIcon from '@material-ui/icons/Language';
+import HelpIcon from '@material-ui/icons/Help';
+import EmailIcon from '@material-ui/icons/Email';
+import ReportProblemIcon from '@material-ui/icons/ReportProblem';
+import NightsStayIcon from '@material-ui/icons/NightsStay';
+import KeyboardIcon from '@material-ui/icons/Keyboard';
+
 import { makeStyles } from '@material-ui/core/styles';
 
 import { CSSTransition } from 'react-transition-group';
@@ -22,6 +36,10 @@ const useStyles = makeStyles((theme) => ({
         margin: theme.spacing(1),
       },
     },
+    smaller: {
+        width: theme.spacing(2),
+        height: theme.spacing(2),
+      },
     small: {
       width: theme.spacing(4),
       height: theme.spacing(4),
@@ -77,6 +95,11 @@ const DropDownMenu = () => {
         const height = elem.offsetHeight + 35;
         setMenuHeight(height);
     }
+    const [{user}, dispatch] = useStateValue();
+    const logOut = () => {
+        console.log(user);
+     
+    }
 
     const DropDownItem = ({children, goToMenu, leftIcon, rightIcon}) => {
         return (
@@ -101,15 +124,26 @@ const DropDownMenu = () => {
                     <DropDownItem leftIcon={<Avatar className={classes.small} />}>
                         Your Profile
                     </DropDownItem>
-                    <DropDownItem goToMenu="settings"  leftIcon={<FeedbackIcon className={classes.small} />}>
+                    <DropDownItem leftIcon={<FeedbackIcon className={classes.small} />}>
                         Feedback
                     </DropDownItem>
-                    <DropDownItem leftIcon={<MeetingRoomIcon />}>
-                        Log out
+                    <DropDownItem goToMenu="settings" rightIcon={<ArrowForwardIosIcon className={classes.smaller} />}  leftIcon={<SettingsIcon className={classes.small} />}>
+                        Settings & privacy
                     </DropDownItem>
+                    <DropDownItem goToMenu="helpSupport" rightIcon={<ArrowForwardIosIcon className={classes.smaller} />}  leftIcon={<HelpIcon className={classes.small} />}>
+                        Help & support
+                    </DropDownItem>
+                    <DropDownItem goToMenu="displayAccess" rightIcon={<ArrowForwardIosIcon className={classes.smaller} />}  leftIcon={<NightsStayIcon className={classes.small} />}>
+                        Display & accessibility
+                    </DropDownItem>
+                    <div onClick={logOut}>
+                        <DropDownItem leftIcon={<MeetingRoomIcon />}>
+                            <div>Log out</div>
+                        </DropDownItem>
+                    </div>
                 </div>
             </CSSTransition>
-            
+{/* settings nested */}
             <CSSTransition 
              in={activeMenu === 'settings'}
              unmountOnExit
@@ -118,8 +152,83 @@ const DropDownMenu = () => {
              onEnter={calcHeight}
             >
                 <div className="main-menu">
-                    <DropDownItem goToMenu="main" >
-                        fuck go back
+                    <DropDownItem leftIcon={<ArrowForwardIosIcon style={{transform: `Rotate(180deg)`}}/>} goToMenu="main" >
+                        <p style={{marginTop: `-5px`}}>Back</p>
+                    </DropDownItem>
+                    <DropDownItem leftIcon={<SettingsIcon />} >
+                        <p style={{marginTop: `-5px`}}>Settings</p>
+                    </DropDownItem>
+                    <DropDownItem leftIcon={<LockIcon />} >
+                        <p style={{marginTop: `-5px`}}>Privacy Checkup</p>
+                    </DropDownItem>
+                    <DropDownItem leftIcon={<LockIcon />} >
+                        <p style={{marginTop: `-5px`}}>Privacy shortcuts</p>
+                    </DropDownItem>
+                    <DropDownItem leftIcon={<FormatListBulletedIcon />} >
+                        <p style={{marginTop: `-5px`}}>Activity log</p>
+                    </DropDownItem>
+                    <DropDownItem leftIcon={<AppsIcon />} >
+                        <p style={{marginTop: `-5px`}}>News Feed preferences</p>
+                    </DropDownItem>
+                    <DropDownItem leftIcon={<LanguageIcon />} >
+                        <p style={{marginTop: `-5px`}}>Language</p>
+                    </DropDownItem>
+                </div>
+            </CSSTransition>
+{/* help and support nested */}
+            <CSSTransition 
+             in={activeMenu === 'helpSupport'}
+             unmountOnExit
+             timeout={500}
+             classNames="menu-secondary"
+             onEnter={calcHeight}
+            >
+                <div className="main-menu">
+                    <DropDownItem leftIcon={<ArrowForwardIosIcon style={{transform: `Rotate(180deg)`}}/>} goToMenu="main" >
+                        <p style={{marginTop: `-5px`}}>Back</p>
+                    </DropDownItem>
+                    <DropDownItem leftIcon={<HelpIcon />} >
+                        <p style={{marginTop: `-5px`}}>Help center</p>
+                    </DropDownItem>
+                    <DropDownItem leftIcon={<EmailIcon />} >
+                        <p style={{marginTop: `-5px`}}>Support inbox</p>
+                    </DropDownItem>
+                    <DropDownItem leftIcon={<ReportProblemIcon />} >
+                        <p style={{marginTop: `-5px`}}>Report a problem</p>
+                    </DropDownItem>
+                </div>
+            </CSSTransition>
+{/* display and accessibility nested */}
+            <CSSTransition 
+             in={activeMenu === 'displayAccess'}
+             unmountOnExit
+             timeout={500}
+             classNames="menu-secondary"
+             onEnter={calcHeight}
+            >
+                <div className="main-menu">
+                    <DropDownItem leftIcon={<ArrowForwardIosIcon style={{transform: `Rotate(180deg)`}}/>} goToMenu="main" >
+                        <p style={{marginTop: `-5px`}}>Back</p>
+                    </DropDownItem>
+                    <div className="darkMode-settings">
+                        <NightsStayIcon />
+                        <div>
+                            <h4>Dark mode</h4>
+                            <p>Adjust the appearance of Facebook to reduce glare and give your eyes a break.</p>
+                            <form className="darkMode-settingsRadio">
+                                <label >
+                                    OFF
+                                    <input name="mode" type="radio"></input>
+                                </label>
+                                <label>
+                                    ON
+                                    <input name="mode" type="radio"></input>
+                                </label>
+                            </form>
+                        </div>
+                    </div>
+                    <DropDownItem rightIcon={<ArrowForwardIosIcon className={classes.smaller} />} leftIcon={<KeyboardIcon />} >
+                        <p style={{marginTop: `-5px`}}>Keyboard</p>
                     </DropDownItem>
                 </div>
             </CSSTransition>
