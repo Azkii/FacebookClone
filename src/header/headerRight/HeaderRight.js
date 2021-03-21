@@ -24,18 +24,15 @@ import EmailIcon from '@material-ui/icons/Email';
 import ReportProblemIcon from '@material-ui/icons/ReportProblem';
 import NightsStayIcon from '@material-ui/icons/NightsStay';
 import KeyboardIcon from '@material-ui/icons/Keyboard';
+import StarIcon from '@material-ui/icons/Star';
+
+import SettingsDisplayAccess from './display&accessSettings/SettingsDisplayAccess'
 
 import { makeStyles } from '@material-ui/core/styles';
 
 import { CSSTransition } from 'react-transition-group';
 
 const useStyles = makeStyles((theme) => ({
-    root: {
-      display: 'flex',
-      '& > *': {
-        margin: theme.spacing(1),
-      },
-    },
     smaller: {
         width: theme.spacing(2),
         height: theme.spacing(2),
@@ -48,6 +45,14 @@ const useStyles = makeStyles((theme) => ({
       width: theme.spacing(7),
       height: theme.spacing(7),
     },
+    radio: {
+        margin: `0px`,
+        marginTop: `5px`,
+        fontWeight: `bold`,
+        width: `220px`,
+        display: `flex`,
+        justifyContent: `space-between`,
+    }
   }));
 
 function HeaderRight() {
@@ -210,25 +215,29 @@ const DropDownMenu = () => {
                     <DropDownItem leftIcon={<ArrowForwardIosIcon style={{transform: `Rotate(180deg)`}}/>} goToMenu="main" >
                         <p style={{marginTop: `-5px`}}>Back</p>
                     </DropDownItem>
-                    <div className="darkMode-settings">
-                        <NightsStayIcon />
-                        <div>
-                            <h4>Dark mode</h4>
-                            <p>Adjust the appearance of Facebook to reduce glare and give your eyes a break.</p>
-                            <form className="darkMode-settingsRadio">
-                                <label >
-                                    OFF
-                                    <input name="mode" type="radio"></input>
-                                </label>
-                                <label>
-                                    ON
-                                    <input name="mode" type="radio"></input>
-                                </label>
-                            </form>
-                        </div>
-                    </div>
-                    <DropDownItem rightIcon={<ArrowForwardIosIcon className={classes.smaller} />} leftIcon={<KeyboardIcon />} >
+                    <SettingsDisplayAccess classes={classes} />
+                    <DropDownItem goToMenu='keyBoard' rightIcon={<ArrowForwardIosIcon className={classes.smaller} />} leftIcon={<KeyboardIcon />} >
                         <p style={{marginTop: `-5px`}}>Keyboard</p>
+                    </DropDownItem>
+                </div>
+            </CSSTransition>
+{/* keyBoardSettings nested x2 */}
+            <CSSTransition 
+             in={activeMenu === 'keyBoard'}
+             unmountOnExit
+             timeout={500}
+             classNames="menu-third"
+             onEnter={calcHeight}
+            >
+                <div className="main-menu">
+                    <DropDownItem leftIcon={<ArrowForwardIosIcon style={{transform: `Rotate(180deg)`}}/>} goToMenu="displayAccess" >
+                        <p style={{marginTop: `-5px`}}>Back</p>
+                    </DropDownItem>
+                    <DropDownItem leftIcon={<KeyboardIcon />}>
+                        <p style={{marginTop: `-5px`}}>See all keyboard shortcuts</p>
+                    </DropDownItem>
+                    <DropDownItem leftIcon={<StarIcon />}>
+                        <p style={{marginTop: `-5px`}}>Change single character keyboard shortcuts</p>
                     </DropDownItem>
                 </div>
             </CSSTransition>

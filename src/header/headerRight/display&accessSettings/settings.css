@@ -1,0 +1,16 @@
+/*special div for dark mode*/
+.darkMode-settings {
+    display: flex;
+}
+.darkMode-settings > div {
+    margin-left: 10px;
+    width: 250px;
+}
+.darkMode-settings > div > p {
+    font-size: 0.8rem;
+}
+.darkMode-settingsRadio {
+    display: flex;
+    flex-direction: column;
+    margin-top: 10px;
+}

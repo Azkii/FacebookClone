@@ -8,6 +8,7 @@
 .dropDown-menu {
     position: absolute;
     top: 75px;
+    right: 20px;
     width: 300px;
     background-color: #fafafa;
     overflow: hidden;
@@ -16,6 +17,7 @@
     transition: height 500ms ease;
 }
 .dropDownItem {
+    width: 280px;
     height: 50px;
     display: flex;
     align-items: center;
@@ -70,17 +72,19 @@
     transition: all 500ms ease;
 }
 
-/*special div for dark mode*/
-.darkMode-settings {
-    display: flex;
+.menu-third-enter {
+    position: absolute;
+    transform: translateY(-130%);
+    transition: all 500ms ease;
 }
-.darkMode-settings > div {
-    margin-left: 10px;
+.menu-third-enter-active {
+    transform: translateY(0%);
+    transition: all 500ms ease;
 }
-.darkMode-settings > div > p {
-    font-size: 0.8rem;
+.menu-third-exit {
+    position: absolute;
 }
-.darkMode-settingsRadio {
-    display: flex;
-    flex-direction: column;
+.menu-third-exit-active {
+    transform: translateY(-130%);
+    transition: all 500ms ease;
 }
