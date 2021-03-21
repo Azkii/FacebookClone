@@ -77,10 +77,11 @@ function HeaderRight() {
 }
 const NavButton = ({icon,children,open,setOpen}) => {
 
-
     return (
     <>
-    <IconButton onClick={() => setOpen(!open)}>
+    <IconButton onClick={() => {
+        open === undefined ? console.log("option in production") : setOpen(!open)}
+    }>
         {icon}
     </IconButton>
     {open && children}
