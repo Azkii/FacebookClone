@@ -1,7 +1,6 @@
 import React,{ useState } from 'react';
 import './headerRight.css';
 
-import firebase from 'firebase';
 
 import { useStateValue } from '../../stateProvider/StateProvider';
 

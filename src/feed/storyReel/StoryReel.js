@@ -6,6 +6,7 @@ import AddIcon from '@material-ui/icons/Add';
 import { IconButton } from '@material-ui/core';
 
 import Carousel from 'react-elastic-carousel';
+import { Link } from 'react-router-dom';
 
 function StoryReel() {
     const [stories,setStories] = useState([]);
@@ -48,11 +49,13 @@ function StoryReel() {
                    />
                 )
             })}
-            <div className="addStory">
-                <IconButton>
-                    <AddIcon />
-                </IconButton>
-            </div>
+            <Link to="/stories/create">
+                <div className="addStory">
+                    <IconButton>
+                        <AddIcon />
+                    </IconButton>
+                </div>
+            </Link>
         </Carousel>
     )
 }

@@ -1,0 +1,117 @@
+.storiesCreate-leftMenu::-webkit-scrollbar {
+    display: none;
+}
+.storiesCreate-leftMenu {
+    display: flex;
+    flex-direction: column;
+    width: 370px;
+    padding-bottom: 200px;
+    overflow-y: scroll;
+    background-color: white;
+}
+.storiesCreate-leftMenu-nav {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    background-color: rgb(250, 250, 250);
+    padding: 10px 10px;
+}
+.storiesCreate-leftMenu-nav > * {
+    width: 40px;
+    height: 40px;
+    margin: 0 5px;
+}
+.storiesCreate-leftMenu-navIconBtn {
+    background-color: rgba(200, 200, 200, 0.808);
+}
+.storiesCreate-yourStory {
+    height: 100%;
+    width: 100%;
+}
+.storiesCreate-yourStory header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+}
+.storiesCreate-yourStory header h1 {
+    font-size: 1.8rem;
+}
+.storiesCreate-yourStory-profile {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    padding: 10px;
+    padding-bottom: 25px;
+    border-bottom: solid rgba(200, 200, 200, 0.808) 1px;
+}
+.storiesCreate-yourStory-profile > *:nth-child(1) {
+    width: 50px;
+    height: 50px;
+}
+.storiesCreate-yourStory-profile > p {
+    font-size: 1.2rem;
+    letter-spacing: 0.2px;
+    margin-left: 10px;
+}
+.storiesCreate-yourStory-inputs {
+    padding: 15px;
+}
+.storiesCreate-yourStory-input:nth-child(1) {
+    margin-bottom: 10px;
+}
+.storiesCreate-yourStory-input {
+    width: 100%;
+    margin: 10px 0;
+}
+.storiesCreate-yourStory-inputBackground {
+    display: flex;
+    flex-direction: column;
+    border: solid rgba(128, 128, 128, 0.548) 1px;
+    border-radius: 5px;
+    padding: 10px;
+    height: 150px;
+    overflow: hidden;
+    position: relative;
+}
+.storiesCreate-yourStory-inputBackground > p {
+    opacity: 0.7;
+}
+.storiesCreate-yourStory-inputBackground button { 
+    position: absolute;
+    width: 100%;
+    left: 0;
+    bottom: 0;
+    border: none;
+    outline: none;
+    height: 35px;
+}
+.storiesCreate-leftMenu > form {
+    background-color: white;
+    position: absolute;
+    width: 370px;
+    z-index: 100;
+    bottom: 0;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    padding: 15px 0;
+    box-shadow: 0 -5px 8px -5px rgb(82, 82, 82);
+}
+.storiesCreate-leftMenu > form > button {
+    border: none;
+    outline: none;
+    font-size: 1rem;
+    border-radius: 5px;
+}
+.storiesCreate-leftMenu > form > button:nth-child(1) {
+    width: 120px;
+    height: 40px;
+    background-color:rgba(200, 200, 200, 0.418);
+}
+.storiesCreate-leftMenu > form > button:nth-child(2) {
+    width: 180px;
+    height: 40px;
+    background-color: #1877F2;
+    color: rgba(245, 245, 245, 0.9);
+}
