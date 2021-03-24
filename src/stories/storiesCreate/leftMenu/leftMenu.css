@@ -73,6 +73,7 @@
     height: 150px;
     overflow: hidden;
     position: relative;
+    transition: 0.1s;
 }
 .storiesCreate-yourStory-inputBackground > p {
     opacity: 0.7;
@@ -114,4 +115,25 @@
     height: 40px;
     background-color: #1877F2;
     color: rgba(245, 245, 245, 0.9);
+}
+.storiesCreate-yourStory-inputBackground > div {
+    margin-top: 10px;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    flex-wrap: wrap;
+}
+/*Bubble design*/
+.storiesCreate-bubbleOption {
+    margin: 5px 5px;
+    width: 25px;
+    height: 25px;
+    border-radius: 100%;
+    background-image: url('https://i.pinimg.com/originals/6c/5a/db/6c5adb47f7d02952319e960a17810038.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+}
+.storiesCreate-bubbleOption__clicked {
+    border: solid blue 2px;
 }

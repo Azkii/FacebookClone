@@ -4,11 +4,16 @@ import './storiesCreateMain.css';
 import { Avatar, Icon, IconButton } from '@material-ui/core';
 import AddIcon from '@material-ui/icons/Add';
 import NotificationsIcon from '@material-ui/icons/Notifications';
+
+import { useStateValue } from '../../stateProvider/StateProvider';
+
 function StoriesCreate() {
-    const [story,setStory] = useState(
+    const [{user}] = useStateValue();
+    const [story,setStory] = useState (
         {
             id: null,
-            createdBy: null,
+            createdBy: user.displayName,
+            userURL: user.photoURL,
             text: "",
             backgroundURL: null,
             fontStyle: null,
@@ -16,7 +21,7 @@ function StoriesCreate() {
     );
     return (
         <div className="storiesCreate-container">
-            <LeftMenu storyProp = {story} setStoryProp={setStory} />
+            <LeftMenu storyProp = {story} setStoryProp={setStory} user={user} />
             <div className="storiesCreate-main">
                 <nav className="storiesCreate-navBar">
                     <IconButton>
@@ -25,12 +30,15 @@ function StoriesCreate() {
                     <IconButton>
                         <NotificationsIcon />
                     </IconButton>
-                    <Avatar src="" />
+                    <Avatar src={user.photoURL} />
                 </nav>
                 <div className="storiesCreate-preview">
                     <p>Preview</p>
                     <div className="storiesCreate-previewContent">
-                        <div className="storiesCreate-storyCard">
+                        <div 
+                         className="storiesCreate-storyCard"
+                         style={{backgroundImage: `url(${story.backgroundURL})`}}
+                        >
                             <h3>
                                 {story.text === "" ? "START TYPING" : story.text}
                             </h3>
