@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import './leftMenu.css';
 import CloseIcon from '@material-ui/icons/Close';
 import SettingsIcon from '@material-ui/icons/Settings';
@@ -26,9 +26,9 @@ const currencies = [
     },
   ];
 
-function LeftMenu() {
+function LeftMenu({storyProp,setStoryProp}) {
 
-    const [currency, setCurrency] = React.useState('EUR');
+    const [currency, setCurrency] = React.useState('Text');
     const handleChange = (event) => {
         setCurrency(event.target.value);
     };
@@ -60,6 +60,16 @@ function LeftMenu() {
                  multiline
                  rows={7}
                  variant="outlined"
+                 value = {storyProp.text}
+                 onChange = {(e) => {
+                    let {text,...rest} = storyProp;
+                    setStoryProp (
+                        {
+                            text : e.target.value,
+                            rest
+                        }
+                    );
+                 }}
                 />
                 <TextField
                 className="storiesCreate-yourStory-input"
