@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useCallback } from 'react';
 import './leftMenu.css';
 import CloseIcon from '@material-ui/icons/Close';
 import SettingsIcon from '@material-ui/icons/Settings';
@@ -6,6 +6,13 @@ import { Avatar, IconButton } from '@material-ui/core';
 import TextField from '@material-ui/core/TextField';
 import MenuItem from '@material-ui/core/MenuItem';
 import KeyboardArrowDownIcon from '@material-ui/icons/KeyboardArrowDown';
+
+import DiscardOption from '../discardOption/DiscardOption';
+
+import firebase from 'firebase';
+import db from '../../../firebase';
+
+import {useHistory} from 'react-router-dom';
 
 const fontStylesArr = [
     {
@@ -106,8 +113,13 @@ const backgroundOptionsArr = [
 
 function LeftMenu({storyProp,setStoryProp,user}) {
 
+    const history = useHistory();
+    const handleOnSubmitSuccess = useCallback(() => history.push('/'), [history]);
+
+    const [showDiscardOptions,setShowDiscardOptions] = useState(false);
+
     const [fontStyles, setFontStyles] = React.useState('Text');
-    const [backgroundShow,setBackgroundShow] = useState(false);
+    const [backgroundShow,setBackgroundShow] = useState(true);
     const handleFontStyles = (event) => {
         setFontStyles(event.target.value);
     };
@@ -130,14 +142,30 @@ function LeftMenu({storyProp,setStoryProp,user}) {
     const submitStory = (e) => {
         e.preventDefault();
         if (storyProp.text === "") return
-        console.log("approved");
+        db.collection("Story").add({
+            createdBy: user.uid,
+            imgURL: storyProp.backgroundURL,
+            profileURL: storyProp.userURL,
+            username: storyProp.createdBy,
+            text: storyProp.text,
+            timeStamp: 
+            firebase
+             .firestore
+             .FieldValue
+             .serverTimestamp(),
+        })
+        handleOnSubmitSuccess();
     };
+
+    const discardOptions = () => {
+        setShowDiscardOptions(true);
+    }
 
     return (
         <div className="storiesCreate-leftMenu">
             <nav className="storiesCreate-leftMenu-nav">
                 <IconButton className="storiesCreate-leftMenu-navIconBtn">
-                    <CloseIcon />
+                    <CloseIcon onClick={discardOptions} />
                 </IconButton>
                 <img src="https://facebookbrand.com/wp-content/uploads/2019/04/f_logo_RGB-Hex-Blue_512.png?w=512&h=512" />
             </nav>
@@ -209,9 +237,10 @@ function LeftMenu({storyProp,setStoryProp,user}) {
                 </div>
             </div>
             <form onSubmit={submitStory}>
-                <button>Discard</button>
+                <button onClick={discardOptions}>Discard</button>
                 <button type="submit">Share the story</button>
             </form>
+            {showDiscardOptions ? <DiscardOption setShowDiscardOptions={setShowDiscardOptions}  /> : ""}
         </div>
     )
 }

@@ -8,6 +8,7 @@ import { useStateValue } from '../../stateProvider/StateProvider'
 
 import db from '../../firebase';
 import firebase from 'firebase';
+
 function MessegeSender() {
     console.log();
     const [{user},dispatch] = useStateValue();
