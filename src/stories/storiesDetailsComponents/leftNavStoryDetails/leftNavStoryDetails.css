@@ -1,6 +1,7 @@
 .leftNavStoryDetails {
     display: flex;
     flex-direction: column;
+    min-width: 370px;
     width: 370px;
     background-color: white;
 }
