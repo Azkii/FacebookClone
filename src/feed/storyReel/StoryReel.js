@@ -25,7 +25,7 @@ function StoryReel() {
     return (
         <Carousel itemsToShow={5} className="storyReel">
             {stories
-             .slice(0, 7)
+             .slice(0, 5)
              .map(story => {
                 return (
                     <Story 

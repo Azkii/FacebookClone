@@ -6,6 +6,8 @@ import Feed from './feed/Feed';
 import Widget from './widget/Widget';
 import Login from './login/Login';
 import StoriesCreate from './stories/storiesCreate/StoriesCreate';
+import Stories from './stories/Stories';
+
 import { useStateValue } from './stateProvider/StateProvider';
 
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
@@ -29,6 +31,8 @@ function App() {
         </Route>
 {/* Creating story path */}
         <Route exact path="/stories/create" component={StoriesCreate} />
+{/* Creating story details */}
+        <Route exact path="/stories/test" component={Stories} />
       </Switch>
       </Router>
       }
