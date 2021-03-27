@@ -44,6 +44,7 @@ function Post({profile,image,username,timeStamp,messege,userID,messegeID,comment
               console.log(err);
           })
     };
+    
     const pushComment = (e) => {
         e.preventDefault();
 
@@ -69,6 +70,7 @@ function Post({profile,image,username,timeStamp,messege,userID,messegeID,comment
             console.error("Error updating document: ", error);
         })
     }
+
     const deleteComment = (e) => {
         const post = db.collection("posts").doc(messegeID);
         return post.update({

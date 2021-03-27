@@ -141,20 +141,53 @@ function LeftMenu({storyProp,setStoryProp,user}) {
 
     const submitStory = (e) => {
         e.preventDefault();
+
         if (storyProp.text === "") return
-        db.collection("Story").add({
-            createdBy: user.uid,
+        
+        const storiesAuthors = db.collection("Story").doc(user.uid);
+        storiesAuthors.get().then((doc) => {
+            if (doc.exists) {
+                updateAuthorStory(storiesAuthors,doc.data());
+            } else {
+                createNewAuthorStory(storiesAuthors);
+            }
+        }).catch((error) => {
+            console.log("Error getting document:", error);
+        });
+        
+        handleOnSubmitSuccess();
+    };
+
+    const createNewAuthorStory = (storiesAuthors) => {
+        const newStory = {
             imgURL: storyProp.backgroundURL,
-            profileURL: storyProp.userURL,
-            username: storyProp.createdBy,
             text: storyProp.text,
-            timeStamp: 
+        }
+        storiesAuthors.set({
+            storyArr: [newStory],
+            lastUpdate: 
             firebase
              .firestore
              .FieldValue
              .serverTimestamp(),
         })
-        handleOnSubmitSuccess();
+    };
+
+    const updateAuthorStory = (storiesAuthors,data) => {
+        const rest = data.storyArr;
+        const newStory = {
+            imgURL: storyProp.backgroundURL,
+            text: storyProp.text,
+        }
+
+        storiesAuthors.update({
+            lastUpdate: 
+            firebase
+             .firestore
+             .FieldValue
+             .serverTimestamp(),
+            "storyArr": [...rest,newStory]
+        })
     };
 
     const discardOptions = () => {
@@ -197,15 +230,18 @@ function LeftMenu({storyProp,setStoryProp,user}) {
                  }}
                 />
                 <TextField
-                className="storiesCreate-yourStory-input"
-                select
-                value={fontStyles}
-                onChange={handleFontStyles}
-                variant="outlined"
+                 className="storiesCreate-yourStory-input"
+                 select
+                 value={fontStyles}
+                 onChange={handleFontStyles}
+                 variant="outlined"
                 >
                 {fontStylesArr.map((option) => (
-                    <MenuItem key={option.value} value={option.value}>
-                    {option.label}
+                    <MenuItem 
+                     key={option.value}
+                     value={option.value}
+                    >
+                        {option.label}
                     </MenuItem>
                 ))}
                 </TextField>
