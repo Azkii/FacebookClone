@@ -13,7 +13,7 @@ function Header() {
     return (
         <div className="header">
             <div className="header-left">
-                <img src="https://facebookbrand.com/wp-content/uploads/2019/04/f_logo_RGB-Hex-Blue_512.png?w=512&h=512"></img>
+                <img src="https://facebookbrand.com/wp-content/uploads/2019/04/f_logo_RGB-Hex-Blue_512.png?w=512&h=512" alt="Facebook-logo"></img>
                 <div className="header-input">
                     <SearchIcon />
                     <input type="text" placeholder="Search here" />

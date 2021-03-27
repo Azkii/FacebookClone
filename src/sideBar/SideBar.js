@@ -1,4 +1,3 @@
-import userEvent from '@testing-library/user-event';
 import React from 'react';
 import './sideBar.css';
 import SideBarRow from './SideBarRow';
@@ -13,7 +12,7 @@ import { useStateValue } from '../stateProvider/StateProvider';
 
 function Sidebar() {
 
-    const [{user},dispatch] = useStateValue();
+    const [{user}] = useStateValue();
 
     return (
         <div className="sideBar">

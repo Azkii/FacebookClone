@@ -200,10 +200,10 @@ function LeftMenu({storyProp,setStoryProp,user}) {
     return (
         <div className="storiesCreate-leftMenu">
             <nav className="storiesCreate-leftMenu-nav">
-                <IconButton className="storiesCreate-leftMenu-navIconBtn">
-                    <CloseIcon onClick={discardOptions} />
+                <IconButton className="storiesCreate-leftMenu-navIconBtn" onClick={discardOptions}>
+                    <CloseIcon />
                 </IconButton>
-                <img src="https://facebookbrand.com/wp-content/uploads/2019/04/f_logo_RGB-Hex-Blue_512.png?w=512&h=512" />
+                <img src="https://facebookbrand.com/wp-content/uploads/2019/04/f_logo_RGB-Hex-Blue_512.png?w=512&h=512" alt="facebook-logo" />
             </nav>
             <div className="storiesCreate-yourStory">
                 <header>

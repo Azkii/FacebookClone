@@ -12,7 +12,7 @@ function LeftNavStoryDetails() {
                 <IconButton>
                     <CloseIcon />
                 </IconButton>
-                <img src="https://facebookbrand.com/wp-content/uploads/2019/04/f_logo_RGB-Hex-Blue_512.png?w=512&h=512" />
+                <img src="https://facebookbrand.com/wp-content/uploads/2019/04/f_logo_RGB-Hex-Blue_512.png?w=512&h=512" alt="facebook-logo" />
             </nav>
             <header className="leftNavStoryDetails-header">
                 <h3>Stories</h3>

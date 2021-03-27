@@ -29,7 +29,7 @@ const useStyles = makeStyles((theme) => ({
 
 function Post({profile,image,username,timeStamp,messege,userID,messegeID,comments}) {
     const classes = useStyles();
-    const [{user},dispatch] = useStateValue();
+    const [{user}] = useStateValue();
     const [showComments,setShowComments] = useState(false);
     const [inputComment,setInputComment] = useState("");
     const deletePost = () => {
@@ -76,7 +76,7 @@ function Post({profile,image,username,timeStamp,messege,userID,messegeID,comment
         return post.update({
             "comments" : comments.filter((comment) => {
                 console.log(comment.commentKey);
-                return comment.commentKey != e.target.getAttribute('data-key');
+                return comment.commentKey !== e.target.getAttribute('data-key');
             })
         })
         .then(() => {
@@ -106,7 +106,7 @@ function Post({profile,image,username,timeStamp,messege,userID,messegeID,comment
                 <p>{messege}</p>
             </div>
             <div className="post-image">
-                <img src={image} />
+                <img src={image} alt="" />
             </div>
             <div className="post-reactions">
                 <div className="post-reaction">

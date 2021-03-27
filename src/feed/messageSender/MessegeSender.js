@@ -11,7 +11,7 @@ import firebase from 'firebase';
 
 function MessegeSender() {
     console.log();
-    const [{user},dispatch] = useStateValue();
+    const [{user}] = useStateValue();
     const [inputText, setInputText] = useState('');
     const [imageUrl, setImageUrl] = useState('');
     const handleSubmit = e => {

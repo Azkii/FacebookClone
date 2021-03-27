@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import LeftMenu from './leftMenu/LeftMenu';
 import './storiesCreateMain.css';
-import { Avatar, Icon, IconButton } from '@material-ui/core';
+import { Avatar, IconButton } from '@material-ui/core';
 import AddIcon from '@material-ui/icons/Add';
 import NotificationsIcon from '@material-ui/icons/Notifications';
 

@@ -56,7 +56,7 @@ const useStyles = makeStyles((theme) => ({
 
 function HeaderRight() {
 
-    const [{user},dispatch] = useStateValue();
+    const [{user}] = useStateValue();
 
     const [open,setOpen] = useState(false);
     return (
@@ -100,7 +100,7 @@ const DropDownMenu = () => {
         const height = elem.offsetHeight + 35;
         setMenuHeight(height);
     }
-    const [{user}, dispatch] = useStateValue();
+    const [{user}] = useStateValue();
     const logOut = () => {
         console.log(user);
      
@@ -126,7 +126,7 @@ const DropDownMenu = () => {
              onEnter={calcHeight}
             >
                 <div className="main-menu">
-                    <DropDownItem leftIcon={<Avatar className={classes.small} />}>
+                    <DropDownItem leftIcon={<Avatar className={classes.small} src={user.photoURL} />}>
                         Your Profile
                     </DropDownItem>
                     <DropDownItem leftIcon={<FeedbackIcon className={classes.small} />}>

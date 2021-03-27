@@ -9,6 +9,7 @@ function Widget() {
          height="600"
          scrolling="no"
          allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"
+         title="widget-facebook"
         />
         </div>
     )

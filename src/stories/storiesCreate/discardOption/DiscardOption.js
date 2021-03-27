@@ -18,8 +18,8 @@ function DiscardOption({setShowDiscardOptions}) {
                 <h3>
                     Discard story?
                 </h3>
-                <IconButton>
-                    <CloseIcon onClick={cancelDiscard} />
+                <IconButton onClick={cancelDiscard} >
+                    <CloseIcon />
                 </IconButton>
             </nav>
             <div>
