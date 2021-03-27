@@ -2,8 +2,8 @@ import React from 'react';
 import './stories.css';
 
 import LeftNavStoryDetails from './storiesDetailsComponents/leftNavStoryDetails/LeftNavStoryDetails';
-import StoryDetailsMain from './storiesDetailsComponents/StoryDetailsMain';
-import RightNavStoryDetails from './storiesDetailsComponents/RightNavStoryDetails';
+import StoryDetailsMain from './storiesDetailsComponents/storyDetailsMain/StoryDetailsMain';
+import RightNavStoryDetails from './storiesDetailsComponents/rightNavStoryDetails/RightNavStoryDetails';
 
 function Stories() {
     return (

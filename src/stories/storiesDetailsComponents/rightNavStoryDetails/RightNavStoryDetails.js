@@ -6,6 +6,8 @@ import NotificationsIcon from '@material-ui/icons/Notifications';
 import VisibilityIcon from '@material-ui/icons/Visibility';
 import { Avatar, IconButton } from '@material-ui/core';
 
+import './rightNavStoryDetails.css';
+
 function RightNavStoryDetails() {
     return (
         <div className="rightNavStoryDetails">
@@ -22,6 +24,17 @@ function RightNavStoryDetails() {
                 <Avatar />
             </nav>
             <div className="rightNavStoryDetails-storyDetails">
+                <div className="rightNavStoryDetails-storyDetails__stories">
+                    <h4>Story details</h4>
+                    <div className="rightNavStoryDetails-storyDetails__storiesList">
+                        <div>1</div>
+                        <div>2</div>
+                        <div>3</div>
+                        <IconButton>
+                            <AddIcon />
+                        </IconButton>
+                    </div>
+                </div>
                 <div className="rightNavStoryDetails-storyDetails__viewers">
                     <header>
                         <VisibilityIcon />
