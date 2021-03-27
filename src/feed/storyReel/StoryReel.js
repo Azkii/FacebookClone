@@ -12,7 +12,7 @@ function StoryReel() {
     const [stories,setStories] = useState([]);
     useEffect(() => {
         db.collection('Story')
-            .orderBy('timeStamp', 'desc')
+            .orderBy('lastUpdate', 'desc')
             .onSnapshot(snap => {
                 setStories(snap.docs.map(doc => {
                     return {
@@ -30,7 +30,7 @@ function StoryReel() {
                 return (
                     <Story 
                      key={story.id}
-                     backImg={story.data.imgURL}
+                     backImg={story.data.storyArr[story.data.storyArr.length-1].imgURL}
                      profile={story.data.profileURL}
                      text={story.data.username}
                     />

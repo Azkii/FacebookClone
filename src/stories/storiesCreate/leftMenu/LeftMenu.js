@@ -164,6 +164,9 @@ function LeftMenu({storyProp,setStoryProp,user}) {
             text: storyProp.text,
         }
         storiesAuthors.set({
+            createdBy: user.uid,
+            username: storyProp.createdBy,
+            profileURL: storyProp.userURL,
             storyArr: [newStory],
             lastUpdate: 
             firebase
