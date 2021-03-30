@@ -6,11 +6,9 @@ import './storyDetailsMain.css';
 
 function StoryDetailsMain({selectedStories,currentStoryView,setCurrentStoryView}) {
     const goBack = () => {
-        console.log(currentStoryView);
         (currentStoryView === 0) ? setCurrentStoryView(selectedStories[0].data.storyArr.length-1) : setCurrentStoryView(currentStoryView-1)
     }
     const goForward = () => {
-        console.log(currentStoryView);
         (currentStoryView >= selectedStories[0].data.storyArr.length-1) ? setCurrentStoryView(0) : setCurrentStoryView(currentStoryView+1)
     }
     return (
@@ -18,7 +16,7 @@ function StoryDetailsMain({selectedStories,currentStoryView,setCurrentStoryView}
             <div className="storyDetailsMain-arrowIcons" onClick={goBack}>
                 <ArrowBackIosIcon />
             </div>
-            <div className="storyDetailsMain-story" style={{background: `url(${selectedStories[0]?.data.storyArr[currentStoryView]?.imgURL})`}}>
+            <div className="storyDetailsMain-story" style={{backgroundImage: `url(${selectedStories[0]?.data.storyArr[currentStoryView]?.imgURL})`}}>
                 <h3>{selectedStories[0]?.data.storyArr[currentStoryView]?.text}</h3>
             </div>
             <div className="storyDetailsMain-arrowIcons" onClick={goForward}>

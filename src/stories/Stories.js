@@ -41,10 +41,9 @@ function Stories() {
             })
         )
     },[stories])
-
     return (
         <div className="storiesDetails">
-            <LeftNavStoryDetails user={user} stories={stories} />
+            <LeftNavStoryDetails user={user} stories={stories} setSelectedStories={setSelectedStories} />
             <StoryDetailsMain selectedStories={selectedStories} currentStoryView={currentStoryView} setCurrentStoryView={setCurrentStoryView} />
             <RightNavStoryDetails user={user} selectedStories={selectedStories} currentStoryView={currentStoryView} setCurrentStoryView={setCurrentStoryView} />
         </div>

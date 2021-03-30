@@ -6,7 +6,7 @@ import AddIcon from '@material-ui/icons/Add';
 import './leftNavStoryDetails.css';
 import { Link } from 'react-router-dom';
 
-function LeftNavStoryDetails({stories,user}) {
+function LeftNavStoryDetails({stories,user,setSelectedStories}) {
     const [yourStory,setYourStory] = useState([]);
     const [friendsStory,setFriendsStory] = useState([]);
     useEffect(() => {
@@ -21,6 +21,11 @@ function LeftNavStoryDetails({stories,user}) {
             })
         )
     },[stories]);
+
+    const changeViewStories = (newStory) => {
+        setSelectedStories(newStory);
+    }
+
     return (
         <div className="leftNavStoryDetails">
             <nav className="leftNavStoryDetails-nav">
@@ -40,7 +45,7 @@ function LeftNavStoryDetails({stories,user}) {
             </header>
             <div className="leftNavStoryDetails-storyCreators">
                 <h4>Your story</h4>
-                <div className="leftNavStoryDetails-storyCreator">
+                <div className="leftNavStoryDetails-storyCreator" onClick={() => changeViewStories(yourStory)}>
                     <div className="leftNavStoryDetails-storyCreator__infoUser">
                         <Avatar src={yourStory[0]?.data.profileURL} />
                         <div>
@@ -56,7 +61,7 @@ function LeftNavStoryDetails({stories,user}) {
                 </div>
                 {friendsStory?.map((user) => {
                     return (
-                        <div key={user.id} className="leftNavStoryDetails-storyCreator">
+                        <div key={user.id} className="leftNavStoryDetails-storyCreator" onClick={() => changeViewStories([user])}>
                             <div className="leftNavStoryDetails-storyCreator__infoUser">
                                 <Avatar src={user.data.profileURL} />
                                 <div>

@@ -45,6 +45,7 @@
     margin-bottom: 10px;
 }
 .leftNavStoryDetails-storyCreator {
+    cursor: pointer;
     background-color: rgb(245, 245, 245);
     width: 100%;
     display: flex;
