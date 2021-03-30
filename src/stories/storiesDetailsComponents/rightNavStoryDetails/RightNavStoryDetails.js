@@ -39,7 +39,7 @@ function RightNavStoryDetails({user, selectedStories, currentStoryView, setCurre
                             return <div 
                              className={(index===currentStoryView) ? "rightNavStoryDetails-storyDetails__optionStory rightNavStoryDetails-storyDetails__optionStory--clicked" : "rightNavStoryDetails-storyDetails__optionStory"}
                              style={{background: `url(${story.imgURL})`}}
-                             key={story.id+index}
+                             key={story.id}
                              onClick={() => changeSlideStory(index)}
                             >
                                 {story.text}

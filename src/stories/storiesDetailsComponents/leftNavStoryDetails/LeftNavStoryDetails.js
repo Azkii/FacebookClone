@@ -56,7 +56,7 @@ function LeftNavStoryDetails({stories,user}) {
                 </div>
                 {friendsStory?.map((user) => {
                     return (
-                        <div className="leftNavStoryDetails-storyCreator">
+                        <div key={user.id} className="leftNavStoryDetails-storyCreator">
                             <div className="leftNavStoryDetails-storyCreator__infoUser">
                                 <Avatar src={user.data.profileURL} />
                                 <div>

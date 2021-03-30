@@ -171,6 +171,7 @@ function LeftMenu({storyProp,setStoryProp,user}) {
 
     const createNewAuthorStory = (storiesAuthors) => {
         const newStory = {
+            id: `${user.uid}${new Date()}`,
             imgURL: storyProp.backgroundURL,
             text: storyProp.text,
         }
@@ -190,6 +191,7 @@ function LeftMenu({storyProp,setStoryProp,user}) {
     const updateAuthorStory = (storiesAuthors,data) => {
         const rest = data.storyArr;
         const newStory = {
+            id: `${user.uid}${new Date()}`,
             imgURL: storyProp.backgroundURL,
             text: storyProp.text,
         }
