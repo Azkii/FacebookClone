@@ -36,4 +36,9 @@
     height: 90%;
     background-color: whitesmoke;
     border-radius: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: bold;
+    word-break: break-word;
 }

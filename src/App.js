@@ -32,7 +32,7 @@ function App() {
 {/* Creating story path */}
         <Route exact path="/stories/create" component={StoriesCreate} />
 {/* Creating story details */}
-        <Route exact path="/stories/test" component={Stories} />
+        <Route path="/stories/:id" component={Stories} />
       </Switch>
       </Router>
       }

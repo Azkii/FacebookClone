@@ -8,7 +8,15 @@ import { Avatar, IconButton } from '@material-ui/core';
 
 import './rightNavStoryDetails.css';
 
-function RightNavStoryDetails() {
+import Carousel from 'react-elastic-carousel';
+import { Link } from 'react-router-dom';
+
+function RightNavStoryDetails({user, selectedStories, currentStoryView, setCurrentStoryView}) {
+
+    const changeSlideStory = (index) => {
+        setCurrentStoryView(index)
+    }
+
     return (
         <div className="rightNavStoryDetails">
             <nav className="rightNavStoryDetails-nav">
@@ -21,19 +29,28 @@ function RightNavStoryDetails() {
                 <IconButton>
                     <NotificationsIcon />
                 </IconButton>
-                <Avatar />
+                <Avatar src={user.photoURL} />
             </nav>
             <div className="rightNavStoryDetails-storyDetails">
                 <div className="rightNavStoryDetails-storyDetails__stories">
                     <h4>Story details</h4>
-                    <div className="rightNavStoryDetails-storyDetails__storiesList">
-                        <div>1</div>
-                        <div>2</div>
-                        <div>3</div>
-                        <IconButton>
-                            <AddIcon />
-                        </IconButton>
-                    </div>
+                    <Carousel itemsToShow={5}>
+                        {selectedStories[0]?.data.storyArr.map((story,index) => {
+                            return <div 
+                             className={(index===currentStoryView) ? "rightNavStoryDetails-storyDetails__optionStory rightNavStoryDetails-storyDetails__optionStory--clicked" : "rightNavStoryDetails-storyDetails__optionStory"}
+                             style={{background: `url(${story.imgURL})`}}
+                             key={story.id+index}
+                             onClick={() => changeSlideStory(index)}
+                            >
+                                {story.text}
+                            </div>
+                        })}
+                        <Link to="/stories/create">
+                            <IconButton>
+                                <AddIcon />
+                            </IconButton>
+                        </Link>
+                    </Carousel>
                 </div>
                 <div className="rightNavStoryDetails-storyDetails__viewers">
                     <header>

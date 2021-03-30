@@ -154,6 +154,17 @@ function LeftMenu({storyProp,setStoryProp,user}) {
         }).catch((error) => {
             console.log("Error getting document:", error);
         });
+
+        setStoryProp(
+            {
+                id: null,
+                createdBy: user.displayName,
+                userURL: user.photoURL,
+                text: "",
+                backgroundURL: null,
+                fontStyle: null,
+            }
+        );
         
         handleOnSubmitSuccess();
     };

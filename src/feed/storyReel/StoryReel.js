@@ -33,6 +33,7 @@ function StoryReel() {
                      backImg={story.data.storyArr[story.data.storyArr.length-1].imgURL}
                      profile={story.data.profileURL}
                      text={story.data.username}
+                     pathID = {story.id}
                     />
                 )
             })}
