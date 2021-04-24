@@ -4,11 +4,9 @@ Technologies:
   - material UI
   - React Router DOM
   - Firebase
-</br>
-<p>
- Re-creatin of the Facebook desktop website, </ br>
+
+ Re-creatin of the Facebook desktop website,
  parts incldued in project:
-   - adding posts
-   - managing posts
-   - comments
-</p>
+   * adding posts
+   * managing posts
+   * comments
