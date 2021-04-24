@@ -5,7 +5,7 @@ Technologies:
   - React Router DOM
   - Firebase *Backend*
 
- Re-creatin of the Facebook desktop website,
+ Re-creation of the Facebook desktop website,
  parts incldued in project:
   * Home page:
     * adding posts
