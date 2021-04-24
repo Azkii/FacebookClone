@@ -20,3 +20,10 @@ Technologies:
     * adding stories to your story container
   * Login page:
     * Log in provided `by Google`
+
+
+
+
+
+
+`Client side based on useContext`
