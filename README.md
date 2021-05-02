@@ -5,6 +5,7 @@ Technologies:
   - React Router DOM
   - Firebase *Backend*
   - React transition group
+  - State management by use context
 
  Re-creation of the Facebook desktop website,
  parts incldued in project:
@@ -30,5 +31,3 @@ Technologies:
 <img src="https://github.com/Azkii/FacebookClone/blob/master/readme%20files/facebookClone%20(5).gif" align="center" width="100%" >
 <img src="https://github.com/Azkii/FacebookClone/blob/master/readme%20files/facebookClone%20(8).gif" align="center" width="100%" >
 <img src="https://github.com/Azkii/FacebookClone/blob/master/readme%20files/facebookClone%20(7).gif" align="center" width="100%" >
-
-`Client side based on useContext`
