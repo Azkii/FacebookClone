@@ -19,7 +19,7 @@ Technologies:
     * view seperated stories created by users
     * adding stories to your story container
   * Login page:
-    * Log in provided `by Google`
+    * Log in by Google
 <img src="https://github.com/Azkii/FacebookClone/blob/master/readme%20files/facebookClone%20(6).gif" align="center" width="100%" >
 <img src="https://github.com/Azkii/FacebookClone/blob/master/readme%20files/facebookClone%20(3).gif" align="center" width="100%" >
 <p align="center">
